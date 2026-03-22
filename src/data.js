@@ -5,8 +5,7 @@ const menu = [
     category: 'breakfast',
     price: 50,
     img: '/pic/breakfast.jpg',
-    desc: 'แพนเค้กหนานุ่ม ราดน้ำผึ้งฉ่ำๆ เสิร์ฟพร้อมผลไม้สด',
-    // 🟢 เติม options เข้ามาเพื่อให้หน้า FoodDetail แสดง Checkbox
+    desc: 'ไข่ดาว ปลาทอด ไส้กรอก แฮม ขนมปังปิ้ง',
     options: [
       { label: 'เพิ่มไข่ดาว', price: 10 },
       { label: 'เพิ่มไส้กรอก', price: 15 },
@@ -15,19 +14,19 @@ const menu = [
   },
   {
     id: 2,
-    title: 'Diner Double Burger',
+    title: 'ขนมจีบหมู',
     category: 'dim sum',
-    price: 13.99,
-    img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80',
-    desc: 'เบอร์เกอร์เนื้อวากิวสองชั้น ชีสเยิ้มๆ พร้อมเฟรนช์ฟรายส์',
+    price: 13,
+    img: '/pic/DimSum.jpg',
+    desc: 'ขนมจีบหมู',
   },
   {
     id: 3,
-    title: 'Steak & Salad',
+    title: 'ชามะนาวเย็น',
     category: 'drinks',
-    price: 25.99,
-    img: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80',
-    desc: 'สเต็กเนื้อสันในย่างสุกกำลังดี เสิร์ฟพร้อมสลัดผักออร์แกนิก',
+    price: 20,
+    img: '/pic/lemontea.jpg',
+    desc: 'ชามะนาว',
      options: [
       { label: 'หวานน้อย', price: 0 },
       { label: 'หวานปกติ', price: 0 },
@@ -36,19 +35,28 @@ const menu = [
   },
   {
     id: 4,
-    title: 'Oreo Dream',
+    title: 'กาแฟร้อน',
     category: 'coffee',
-    price: 8.99,
-    img: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80',
-    desc: 'ของหวานโอรีโอ้ปั่นเข้มข้น ท็อปด้วยวิปครีมพูนๆ',
+    price: 12,
+    img: '/pic/coffee1.jpg',
+    desc: 'กาแฟร้อน',
+    options: [
+      { label: 'หวานน้อย', price: 0 },
+      { label: 'หวานปกติ', price: 0 },
+      { label: 'หวานมาก', price: 0 }
+    ]
   },
   {
     id: 5,
-    title: 'Eggs Benedict',
+    title: 'ช้าวซอยไก่',
     category: 'special',
-    price: 12.99,
-    img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80',
-    desc: 'ไข่เบเนดิกต์กับแฮมและซอสฮอลแลนเดสเข้มข้น',
+    price: 35,
+    img: '/pic/Khao Soi.jpg',
+    desc: 'ข้าวซอยไก่',
+    options: [
+      { label: 'เพิ่มไก่', price: 5 },
+      { label: 'พิเศษ', price: 20 }
+    ]
   }
 ];
 
