@@ -1,24 +1,27 @@
 import React, { createContext, useState } from 'react';
 
-// สร้าง Context เพื่อให้ทุกหน้าใช้ข้อมูลตะกร้าร่วมกันได้
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  // ฟังก์ชันเพิ่มลงตะกร้า
   const addToCart = (product, quantity) => {
     setCartItems((prevItems) => {
-      // เช็คว่ามีสินค้านี้ในตะกร้าหรือยัง
-      const existingItem = prevItems.find((item) => item.id === product.id);
-      if (existingItem) {
-        // ถ้ามีแล้ว ให้อัปเดตจำนวนเพิ่มขึ้น
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
-        );
+      // 🟢 สร้าง ID เฉพาะสำหรับรายการนี้ โดยเอา ID อาหาร + ออปชัน + หมายเหตุ มารวมกัน
+      // ทำให้ระบบแยกออกว่าอาหารชนิดเดียวกัน แต่สั่งคนละแบบ คือคนละรายการ
+      const cartItemId = `${product.id}-${JSON.stringify(product.options)}-${product.specialRequest}`;
+
+      const existingItemIndex = prevItems.findIndex((item) => item.cartItemId === cartItemId);
+
+      if (existingItemIndex >= 0) {
+        // ถ้าสั่งอาหารเมนูนี้ + ออปชันแบบเดิมเป๊ะๆ ให้บวกจำนวนเพิ่ม
+        const updatedItems = [...prevItems];
+        updatedItems[existingItemIndex].quantity += quantity;
+        return updatedItems;
       }
-      // ถ้ายังไม่มี ให้เพิ่มเข้าไปใหม่
-      return [...prevItems, { ...product, quantity }];
+
+      // ถ้าเป็นเมนูใหม่ หรือ ออปชันไม่เหมือนเดิม ให้เพิ่มเป็นรายการใหม่
+      return [...prevItems, { ...product, quantity, cartItemId }];
     });
   };
 

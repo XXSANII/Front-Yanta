@@ -1,11 +1,17 @@
 const menu = [
   {
     id: 1,
-    title: 'Pancakes',
+    title: 'อาหารเช้า',
     category: 'breakfast',
-    price: 15.99,
-    img: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=500&q=80',
+    price: 50,
+    img: '/pic/breakfast.jpg',
     desc: 'แพนเค้กหนานุ่ม ราดน้ำผึ้งฉ่ำๆ เสิร์ฟพร้อมผลไม้สด',
+    // 🟢 เติม options เข้ามาเพื่อให้หน้า FoodDetail แสดง Checkbox
+    options: [
+      { label: 'เพิ่มไข่ดาว', price: 10 },
+      { label: 'เพิ่มไส้กรอก', price: 15 },
+      { label: 'ไม่รับผัก', price: 0 }
+    ]
   },
   {
     id: 2,
@@ -22,6 +28,11 @@ const menu = [
     price: 25.99,
     img: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80',
     desc: 'สเต็กเนื้อสันในย่างสุกกำลังดี เสิร์ฟพร้อมสลัดผักออร์แกนิก',
+     options: [
+      { label: 'หวานน้อย', price: 0 },
+      { label: 'หวานปกติ', price: 0 },
+      { label: 'หวานมาก', price: 0 }
+    ]
   },
   {
     id: 4,
