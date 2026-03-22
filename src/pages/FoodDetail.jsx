@@ -29,8 +29,18 @@ const FoodDetail = () => {
   };
 
   const handleAddToCart = () => {
+    // คำนวณราคาสินค้าบวกกับราคาออปชันที่เลือก
+    let optionsPrice = 0;
+    if (food.options) {
+      selectedOptions.forEach(optLabel => {
+        const optionDetails = food.options.find(o => o.label === optLabel);
+        if (optionDetails) optionsPrice += optionDetails.price;
+      });
+    }
+
     const productWithOptions = { 
       ...food, 
+      price: food.price + optionsPrice, // อัปเดตราคาใหม่
       options: selectedOptions,
       specialRequest: specialRequest 
     };
@@ -62,12 +72,10 @@ const FoodDetail = () => {
           {food.desc}
         </p>
 
-        {/* 🟢 เงื่อนไข: ตรวจสอบว่ามีข้อมูล options หรือไม่ ถ้ามีให้แสดง Checkbox */}
         {food.options && food.options.length > 0 && (
           <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', background: '#f8fafc', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
             <h4 style={{ margin: 0, color: '#102a42', fontSize: '1.2rem', marginBottom: '0.5rem' }}>ตัวเลือกเพิ่มเติม:</h4>
             
-            {/* วนลูปสร้าง Checkbox ตามข้อมูลที่มีใน data.js */}
             {food.options.map((opt, index) => (
               <label key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer', fontSize: '1.1rem', color: '#475569' }}>
                 <input 
@@ -82,24 +90,13 @@ const FoodDetail = () => {
           </div>
         )}
 
-        {/* ส่วนของ Textbox สำหรับคำขอพิเศษ (แสดงทุกเมนูเหมือนเดิม) */}
         <div style={{ marginBottom: '2.5rem' }}>
           <h4 style={{ margin: 0, color: '#102a42', fontSize: '1.2rem', marginBottom: '0.8rem' }}>คำขอพิเศษ:</h4>
           <textarea 
             value={specialRequest}
             onChange={(e) => setSpecialRequest(e.target.value)}
             placeholder="เช่น ไม่เผ็ด, แยกน้ำยำ, ขอช้อนส้อมเพิ่ม..."
-            style={{ 
-              width: '100%', 
-              minHeight: '80px', 
-              padding: '0.75rem', 
-              borderRadius: '8px', 
-              border: '1px solid #cbd5e1', 
-              fontFamily: 'inherit', 
-              fontSize: '1rem',
-              resize: 'vertical',
-              outline: 'none'
-            }}
+            style={{ width: '100%', minHeight: '80px', padding: '0.75rem', borderRadius: '8px', border: '1px solid #cbd5e1', fontFamily: 'inherit', fontSize: '1rem', resize: 'vertical', outline: 'none' }}
           />
         </div>
 
