@@ -1,9 +1,23 @@
-main {
-  min-height: 100vh;
-  background: #f8fafc;
-  padding: 5rem 0;
-  font-family: sans-serif;
+/* --- 1. CSS Reset: ล้างค่า Margin/Padding ขอบขาวๆ ของเบราว์เซอร์ --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f8fafc; /* ย้ายสีพื้นหลังมาไว้ที่ body เพื่อให้คลุมทั้งหน้า */
+}
+
+/* --- 2. โครงสร้างหลัก (Main Layout) --- */
+main {
+  min-height: calc(100vh - 60px); /* หักความสูงของ Navbar ออก */
+  padding: 3rem 0; /* ลด padding ด้านบนลงนิดหน่อย เพื่อไม่ให้ห่าง Navbar เกินไป */
+}
+
+/* --- 3. ส่วนหัวข้อ (Title) --- */
 .title {
   text-align: center;
   margin-bottom: 2rem;
@@ -19,6 +33,8 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* --- 4. ปุ่มเลือกหมวดหมู่ (Filter Buttons) --- */
 .btn-container {
   margin-bottom: 4rem;
   display: flex;
@@ -44,6 +60,8 @@ main {
   background: #c2410c;
   color: white;
 }
+
+/* --- 5. ตารางการ์ดอาหาร (Grid & Card) --- */
 .section-center {
   width: 90vw;
   margin: 0 auto;
@@ -58,6 +76,7 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 25rem;
+  width: 100%;
 }
 .menu-img {
   object-fit: cover;
@@ -86,6 +105,8 @@ main {
   margin-bottom: 0;
   color: #64748b;
 }
+
+/* --- 6. Responsive Design สำหรับหน้าจอที่กว้างขึ้น --- */
 @media screen and (min-width: 768px) {
   .section-center {
     grid-template-columns: 1fr 1fr;
