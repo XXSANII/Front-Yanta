@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import FoodDetail from './pages/FoodDetail';
 import Cart from './pages/Cart';
 import Kitchen from './pages/Kitchen';
+import Admin from './pages/Admin';
+import Login from './pages/Login';
 import './App.css';
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
             <Route path="/item/:id" element={<FoodDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/kitchen" element={<Kitchen />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
       </Router>
