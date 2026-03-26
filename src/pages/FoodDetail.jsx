@@ -16,7 +16,6 @@ const FoodDetail = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [specialRequest, setSpecialRequest] = useState('');
 
-  // 🟢 ดึงข้อมูลสินค้าชิ้นนี้จาก Firebase ด้วย ID
   useEffect(() => {
     const fetchFoodDetail = async () => {
       try {
